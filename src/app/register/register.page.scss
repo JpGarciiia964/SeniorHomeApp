@@ -1,0 +1,59 @@
+* {
+    font-family: productSansT
+}
+
+ion-content {
+    --ion-background-color: #ffffff
+}
+
+.logo-container {
+    width: 100%;
+    height: 28%
+}
+
+ion-item {
+    --background: #fff;
+    --color: #B53830;
+    --border-color: #B53830;
+    width: 85%
+}
+
+.input-container {
+    height: 100px;
+    position: relative
+}
+
+.check-container {
+    flex-direction: row;
+    height: 100px;
+    position: relative;
+    --background-checked: #B53830;
+    margin: 0 15px 0 30px
+}
+
+ion-label {
+    color: #B53830;
+    font-size: 13px;
+    width: 65%
+}
+
+.label-2 {
+    width: 135px;
+    padding-right: 50px
+}
+
+.label-3 {
+    width: 160px;
+    padding-right: 48px
+}
+
+.label-4 {
+    width: 185px;
+    padding-right: 25px
+}
+
+ion-button {
+    --background: #B53830;
+    width: 85%;
+    height: 45px
+}

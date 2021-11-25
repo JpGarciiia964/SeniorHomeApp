@@ -1,0 +1,7 @@
+{
+  "name": "SeniorHomeApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

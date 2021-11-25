@@ -1,0 +1,34 @@
+<ion-content>
+  <!-- logo -->
+  <ion-row class='logo-container ion-justify-content-center ion-align-items-center'>
+    <img src='../../assets/logo.jpg' alt='' />
+  </ion-row>
+  <!-- logo -->
+  <!-- form login -->
+  <form [formGroup]="loginForm">
+    <ion-row class='input-container ion-justify-content-center ion-align-items-center'>
+      <ion-item lines='none' class='ipt'>
+        <ion-input formControlName="email" placeholder='Username'></ion-input>
+        <ion-icon name='person' slot='start'></ion-icon>
+      </ion-item>
+    </ion-row>
+    <ion-row class='input-container ion-justify-content-center ion-align-items-center'>
+      <ion-item lines='none' class='ipt'>
+        <ion-input formControlName="password" type='password' placeholder='* * * * * * * * * *'></ion-input>
+        <ion-icon name='lock-closed' slot='start'></ion-icon>
+      </ion-item>
+    </ion-row>
+    <!-- button login -->
+    <ion-row class='input-container ion-justify-content-center ion-align-items-center'>
+      <ion-button (click)='login()' class='ion-text-uppercase' shape='round' expand='block'>login</ion-button>
+    </ion-row>
+    <!-- button login -->
+    <!-- button register -->
+    <ion-row class='input-container ion-justify-content-center ion-align-items-center'>
+      <ion-button routerLink='/register' class='register ion-text-uppercase' shape='round' expand='block'>Create account
+      </ion-button>
+    </ion-row>
+    <!-- button register -->
+  </form>
+  <!-- form login -->
+</ion-content>

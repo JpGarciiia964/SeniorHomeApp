@@ -1,0 +1,74 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Registrar Paciente
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- <h3 calss="subtitulo p-3 text-center">Ingrese los datos del paciente</h3> -->
+
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input [(ngModel)]="name"></ion-input>
+  </ion-item> 
+
+  <ion-item>
+    <ion-label position="floating">Cedula</ion-label>
+    <ion-input [(ngModel)]="number"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Edad</ion-label>
+    <ion-input [(ngModel)]="edad"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Sexo</ion-label>
+    <ion-select [(ngModel)]="sex" placeholder="Seleccione uno">
+      <ion-select-option value="M">Masculino</ion-select-option>
+      <ion-select-option value="F">Femenino</ion-select-option>
+
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Grupo sanguineo</ion-label>
+    <ion-select [(ngModel)]="gsng" placeholder="Seleccione uno">
+      <ion-select-option value="O-">O negativo</ion-select-option>
+      <ion-select-option value="O+">O positivo</ion-select-option>
+      <ion-select-option value="A-">A negativo</ion-select-option>
+      <ion-select-option value="A+">A positivo</ion-select-option>
+      <ion-select-option value="B-">B negativo</ion-select-option>
+      <ion-select-option value="B+">B positivo</ion-select-option>
+      <ion-select-option value="AB-">AB negativo</ion-select-option>
+      <ion-select-option value="AB+">AB positivo</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label class="normal">
+      Foto
+    </ion-label>
+      
+    <ion-buttons slot="end">
+      <ion-button>
+        <label for="file-upload">
+        <ion-icon slot="icon-only" name="images-outline"></ion-icon>
+        </label>
+        <ion-input (change)="newImageUpload($event)" id="file-upload" style="display: contents;" type="file" acept="image/*"></ion-input>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+
+  <img [src]="newImage">
+
+  <ion-item>
+  <ion-button *ngIf="seniorId==undefined" (click)="save()" color="danger">Guardar</ion-button>
+  <ion-button *ngIf="seniorId!=undefined" (click)="update()" color="danger">Actualizar</ion-button>
+  </ion-item>
+
+  <!-- <app-explore-container name="Tab 2 page"></app-explore-container> -->
+</ion-content>

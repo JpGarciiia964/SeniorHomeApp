@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Recidencia Bethania
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 1</ion-title>
+    </ion-toolbar>
+  </ion-header>
+    <ion-list line="none">
+
+      <ion-item-sliding *ngFor="let senior of seniors">
+        <ion-item-options side="start">
+          <ion-item-option color="warning" [routerLink]="['/tabs/tab2',senior.key]"><ion-icon style="font-size:30px" name="create-outline"></ion-icon></ion-item-option>
+         
+        </ion-item-options>
+        
+        <ion-item [routerLink]="['/bio',senior.key]">
+          <ion-row style="width: 100%;" >
+            <ion-col size="2">
+              <ion-avatar>
+                <ion-img [src]="senior.image"></ion-img>
+                <!-- <ion-img src="https://i.pinimg.com/236x/e0/b7/e8/e0b7e895361da676c3d709170508cc39.jpg"></ion-img> -->
+              </ion-avatar>
+            </ion-col>
+  
+            <ion-col size="8">
+              <ion-label style="margin-left: 16px;" class="ion-text-wrap">
+                <ion-text color="primary">
+                  <h3>{{senior.name}}</h3>
+                </ion-text>
+                <p>{{senior.number}}</p>
+                <p>Sangre: {{senior.gsng}} | Edad: {{senior.edad}}</p>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+          
+          
+        </ion-item>
+    
+        <ion-item-options side="end">                                              
+          <ion-item-option color="danger" (click)="deleteConfirm(senior.key)"><ion-icon style="font-size:30px" name="eye-off-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+
+      
+    </ion-list>
+  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
+</ion-content>
