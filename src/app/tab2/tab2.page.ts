@@ -18,6 +18,8 @@ export class Tab2Page {
   edad:string ='';
   gsng:string = '';
   sex:string = '';
+  medicamento:string = '';
+  cantidad:string = '';
   image:string = '';
   uid:string;
   seniorId:string;
@@ -31,18 +33,21 @@ export class Tab2Page {
     this.uid = localStorage.getItem('uid')
 
     active.params.subscribe(key=>{
-      console.log(key);
+      console.log("esto es key", key);
       if(key.id!==null){
         console.log("esto es key.id", key.id);
         this.seniorId = key.id;
         console.log("esto es this.seniorId", this.seniorId);
         db.database.ref('list/'+this.uid+"/"+key.id).once('value', (snap)=>{
-          console.log(snap.val());
+          console.log("esto es snap.val",snap.val());
           this.name = snap.val().name
           this.number = snap.val().number
           this.edad = snap.val().edad
           this.gsng = snap.val().gsng
           this.sex = snap.val().sex
+          this.medicamento = snap.val().medicamento
+          this.cantidad = snap.val().cantidad
+          
           this.image = snap.val().image
         })
       }
@@ -57,12 +62,14 @@ export class Tab2Page {
     const res =  await this.firestorageService.uploadImage(this.newFile, path, imagename);
     this.image = res;
 
-    this.db.database.ref('list/'+this.uid).push({name:this.name, number:this.number, edad:this.edad, gsng:this.gsng, sex:this.sex, image:this.image}).then(()=> this).then(()=>{
+    this.db.database.ref('list/'+this.uid).push({name:this.name, number:this.number, edad:this.edad, gsng:this.gsng, sex:this.sex, medicamento:this.medicamento, cantidad:this.cantidad, image:this.image}).then(()=> this).then(()=>{
       this.name="";
       this.number="";
       this.edad="";
       this.gsng="";
       this.sex="";
+      this.medicamento="";
+      this.cantidad="";
       this.image="";
 
     })
@@ -78,12 +85,14 @@ export class Tab2Page {
     const res =  await this.firestorageService.uploadImage(this.newFile, path, imagename);
     this.image = res;
 
-    this.db.database.ref('list/'+this.uid+'/'+this.seniorId).set({name:this.name, number:this.number, edad:this.edad, gsng:this.gsng, sex:this.sex, image:this.image}).then(()=> this).then(()=>{
+    this.db.database.ref('list/'+this.uid+'/'+this.seniorId).set({name:this.name, number:this.number, edad:this.edad, gsng:this.gsng, sex:this.sex, medicamento:this.medicamento, cantidad:this.cantidad, image:this.image}).then(()=> this).then(()=>{
       this.name="";
       this.number="";
       this.edad="";
       this.gsng="";
       this.sex="";
+      this.medicamento="";
+      this.cantidad="";
       this.image="";
     })
     .catch(e=>{

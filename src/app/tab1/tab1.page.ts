@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
+import { BioPage } from '../bio/bio.page';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class Tab1Page implements OnInit {
   uid:string;
 
   constructor(private db: AngularFireDatabase, private user:UserService,
-    private alert:AlertController) {
+    private alert:AlertController, public navCtrl: NavController) {
     this.uid = localStorage.getItem("uid")
   }
 
@@ -26,7 +27,7 @@ export class Tab1Page implements OnInit {
         for(let k in data){
           let user = data [k];
           user.key = k
-          console.log(user);
+          console.log("ID",user.key);
           this.seniors.push(user)
         }
 });
@@ -57,6 +58,6 @@ export class Tab1Page implements OnInit {
 
     await alert.present();
   }
-  
+
 
 }

@@ -19,8 +19,14 @@ const routes: Routes = [
     loadChildren: () => import('./bio/bio.module').then( m => m.BioPageModule)
   },
   {
-    path: 'bio/:senior.key',
+    path: 'bio/:id',
     loadChildren: () => import('./bio/bio.module').then( m => m.BioPageModule)
+  },
+
+ 
+  {
+    path: 'listmedicamentos',
+    loadChildren: () => import('./listmedicamentos/listmedicamentos.module').then( m => m.ListmedicamentosPageModule)
   }
   
 ];

@@ -9,40 +9,40 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Lista de Medicamentos</ion-title>
     </ion-toolbar>
   </ion-header>
     <ion-list line="none">
 
-      <ion-item-sliding *ngFor="let senior of seniors">
+      <ion-item-sliding *ngFor="let medicamento of medicamenots">
         <ion-item-options side="start">
           <ion-item-option color="warning" [routerLink]="['/tabs/tab2',senior.key]"><ion-icon style="font-size:30px" name="create-outline"></ion-icon></ion-item-option>
+         
         </ion-item-options>
         
-        <ion-item>
-          <ion-row [routerLink]="['/bio',senior.key]" style="width: 100%;" >
+        <ion-item [routerLink]="['/bio',senior.key]">
+          <ion-row style="width: 100%;" >
             <ion-col size="2">
               <ion-avatar>
-                <ion-img [src]="senior.image"></ion-img>
-                <!-- <ion-img src="https://i.pinimg.com/236x/e0/b7/e8/e0b7e895361da676c3d709170508cc39.jpg"></ion-img> -->
+                <!-- <ion-img [src]="senior.image"></ion-img> -->
+                <ion-img src="https://i.pinimg.com/236x/e0/b7/e8/e0b7e895361da676c3d709170508cc39.jpg"></ion-img>
               </ion-avatar>
             </ion-col>
   
             <ion-col size="8">
               <ion-label style="margin-left: 16px;" class="ion-text-wrap">
                 <ion-text color="primary">
-                  <h3><b>{{senior.name}}</b></h3>
+                  <h3><b>{{medicamento.nombre}}</b></h3>
                 </ion-text>
-                <p>{{senior.number}}</p>
-                <p>Sangre: {{senior.gsng}} | Edad: {{senior.edad}}</p>
+                <!-- <p>{{senior.number}}</p> -->
+                <!-- <p>Sangre: {{senior.gsng}} | Edad: {{senior.edad}}</p> -->
               </ion-label>
             </ion-col>
           </ion-row>
-          <!-- <ion-icon style="font-size:30px" name="information-circle-outline"></ion-icon> -->
+          
           
         </ion-item>
-        
-
+    
         <ion-item-options side="end">                                              
           <ion-item-option color="danger" (click)="deleteConfirm(senior.key)"><ion-icon style="font-size:30px" name="eye-off-outline"></ion-icon>
           </ion-item-option>

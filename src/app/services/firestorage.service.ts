@@ -11,6 +11,11 @@ export class FirestorageService {
 
   constructor(public storage:AngularFireStorage) { }
 
+
+  public consultaSenior(collection, documentId){
+    return this.storage.refFromURL('list/').child;
+  }
+
   uploadImage(file: any, path: string, nombre: string): Promise<string> {
       return new Promise( resolve => {
         const filePath = path + '/' + nombre;
@@ -28,4 +33,7 @@ export class FirestorageService {
         .subscribe();
       });
   }
+
+  
+  
 }
