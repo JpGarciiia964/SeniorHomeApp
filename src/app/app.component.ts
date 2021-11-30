@@ -15,20 +15,20 @@ export class AppComponent {
     private router:Router,
     private user:UserService
   ) {
-    this.verifyCurrentUser();
+    //this.verifyCurrentUser();
   }
 
 
-  verifyCurrentUser(){
-    this.Auth.authState.subscribe((e:any)=>{
-      if(e==null){
-        this.router.navigate(['/login'])
-      }else{
-        this.user.setUid(e.uid)
-        localStorage.setItem("uid", e.uid)
-        this.router.navigate(['/'],{replaceUrl:true})
-      }
+  //verifyCurrentUser(){
+    //this.Auth.authState.subscribe((e:any)=>{
+      //if(e==null){
+        //this.router.navigate(['/login'])
+      //}else{
+        //this.user.setUid(e.uid)
+        //localStorage.setItem("uid", e.uid)
+        //this.router.navigate(['/'],{replaceUrl:true})
+      //}
       
-    })
-  }
+    //})
+  //}
 }

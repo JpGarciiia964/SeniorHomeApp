@@ -28,7 +28,7 @@
     "@ionic-native/local-notifications": "^5.36.0",
     "@ionic/angular": "^5.5.2",
     "cordova-plugin-local-notification": "^0.9.0-beta.2",
-    "firebase": "^9.4.1",
+    "firebase": "^9.5.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"

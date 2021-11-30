@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>
+      Registro de Medicamentos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input [(ngModel)]="nombre"></ion-input>
+  </ion-item> 
+
+  <ion-item>
+    <ion-label position="floating">Stock</ion-label>
+    <ion-input [(ngModel)]="stock"></ion-input>
+  </ion-item> 
+
+  <ion-item>
+    <ion-label>Fecha Vencimiento</ion-label>
+    <ion-datetime [(ngModel)]="expire" displayFormat="MM/DD/YYYY" placeholder="Select Date" max="2200-08-23"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Lote</ion-label>
+    <ion-input [(ngModel)]="lote"></ion-input>
+  </ion-item> 
+
+  <ion-item>
+    <ion-label class="normal">
+      Foto
+    </ion-label>
+      
+    <ion-buttons slot="end">
+      <ion-button>
+        <label for="file-upload">
+        <ion-icon slot="icon-only" name="images-outline"></ion-icon>
+        </label>
+        <ion-input (change)="newImageUpload($event)" id="file-upload" style="display: contents;" type="file" acept="image/*"></ion-input>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+
+  <img [src]="newImage">
+
+  <ion-item>
+    <ion-button [routerLink]="['/tabs/tab3']" *ngIf="medicamentoId==undefined" (click)="save()" color="danger">Guardar</ion-button>
+    <ion-button [routerLink]="['/tabs/tab3']" *ngIf="medicamentoId!=undefined" (click)="update()" color="danger">Actualizar</ion-button>
+    </ion-item>
+
+  <!-- <app-explore-container name="Tab 3 page"></app-explore-container> -->
+</ion-content>
+

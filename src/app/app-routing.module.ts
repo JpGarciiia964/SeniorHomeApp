@@ -22,13 +22,16 @@ const routes: Routes = [
     path: 'bio/:id',
     loadChildren: () => import('./bio/bio.module').then( m => m.BioPageModule)
   },
-
- 
   {
-    path: 'listmedicamentos',
-    loadChildren: () => import('./listmedicamentos/listmedicamentos.module').then( m => m.ListmedicamentosPageModule)
-  }
+    path: 'medicamentos',
+    loadChildren: () => import('./medicamentos/medicamentos.module').then( m => m.MedicamentosPageModule)
+  },
+  {
+    path: 'medicamentos/:id',
+    loadChildren: () => import('./medicamentos/medicamentos.module').then( m => m.MedicamentosPageModule)
+  },
   
+
 ];
 @NgModule({
   imports: [

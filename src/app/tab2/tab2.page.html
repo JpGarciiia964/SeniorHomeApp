@@ -1,5 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-back-button slot="start"></ion-back-button>
     <ion-title>
       Registrar Paciente
     </ion-title>
@@ -76,8 +77,8 @@
   <img [src]="newImage">
 
   <ion-item>
-  <ion-button *ngIf="seniorId==undefined" (click)="save()" color="danger">Guardar</ion-button>
-  <ion-button *ngIf="seniorId!=undefined" (click)="update()" color="danger">Actualizar</ion-button>
+  <ion-button [routerLink]="['/tabs/tab1']" *ngIf="seniorId==undefined" (click)="save()" color="danger">Guardar</ion-button>
+  <ion-button [routerLink]="['/tabs/tab1']" *ngIf="seniorId!=undefined" (click)="update()" color="danger">Actualizar</ion-button>
   </ion-item>
 
   <!-- <app-explore-container name="Tab 2 page"></app-explore-container> -->

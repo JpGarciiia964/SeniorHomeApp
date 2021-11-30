@@ -5,6 +5,7 @@ import { UserService } from '../services/user.service';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { FirestorageService } from '../services/firestorage.service';
 import { ThrowStmt } from '@angular/compiler';
+import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab3',
@@ -13,54 +14,54 @@ import { ThrowStmt } from '@angular/compiler';
 })
 export class Tab3Page {
 
-  nombre:string='';
-  stock:string='';
-  lote:string='';
-  expire:string='';
-  seniorId:string;
-  uid: string;
-
-
-
-  constructor(private db:AngularFireDatabase, 
-    private user:UserService, 
-    private active:ActivatedRoute, 
-    public firestorageService:FirestorageService) {
-      
-    this.uid = localStorage.getItem('uid')
-
-      active.params.subscribe(key=>{
-        console.log(key);
-        if(key.id!==null){
-          console.log("esto es key.id", key.id);
-          this.seniorId = key.id;
-          console.log("esto es this.seniorId", this.seniorId);
-          db.database.ref('medicamentos/'+this.uid+"/"+key.id).once('value', (snap)=>{
-            console.log(snap.val());
-            this.nombre = snap.val().nombre
-            this.stock = snap.val().stock
-            this.lote = snap.val().lote
-            this.expire = snap.val().expire
-
-          })
-        }
-      })
-    }
-
-
-    save(){
-      this.db.database.ref('medicamentos/'+this.uid).push({nombre:this.nombre, stock:this.stock, lote:this.lote, expire:this.expire}).then(()=> this).then(()=>{
-        this.nombre="";
-        this.stock="";
-        this.lote="";
-        this.expire="";
-      })
-      .catch(e=>{
-        console.log(e);
-     })
-    }
-
-    
+  itemRef : any;
+  medicamentos=[];
+  uid:string;
   
+  constructor(private db: AngularFireDatabase, private user:UserService,
+    private alert:AlertController, public navCtrl: NavController) { 
+      this.uid = localStorage.getItem("uid")
+    }
+  
+  ngOnInit() {
+    this.itemRef = this.db.object('medicamentos/'+this.uid);
+    this.itemRef.snapshotChanges().subscribe(action => {
+      let data = action.payload.val()
+      this.medicamentos=[];
+        for(let k in data){
+          let medicamento = data [k];
+          medicamento.key = k
+          console.log("ID",medicamento.key);
+          this.medicamentos.push(medicamento)
+        }
+  });
+}
+
+async deleteConfirm(key) {
+  const alert = await this.alert.create({
+    cssClass: 'my-custom-class',
+    header: 'Espera!',
+    message: 'Se esta intentando eliminar este medicamento. Desea continuar?',
+    buttons: [
+      {
+        text: 'Cancelar',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: (blah) => {
+          console.log('Confirm Cancel: blah');
+        }
+      }, {
+        text: 'Eliminar',
+        handler: () => {
+          console.log('Confirm Okay');
+          this.db.database.ref('medicamentos/'+this.uid+'/'+key).remove();
+        }
+      }
+    ]
+  });
+
+  await alert.present();
+}
+
 
 }
