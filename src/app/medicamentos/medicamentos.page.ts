@@ -85,7 +85,7 @@ export class MedicamentosPage implements OnInit {
       this.stock="";
       this.lote="";
       this.expire="";
-   
+      this.image="";
     })
     .catch(e=>{
       console.log(e);
