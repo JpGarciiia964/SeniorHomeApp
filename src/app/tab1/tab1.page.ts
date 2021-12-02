@@ -27,8 +27,8 @@ export class Tab1Page implements OnInit {
         for(let k in data){
           let user = data [k];
           user.key = k
-          console.log("ID",user.key);
           this.seniors.push(user)
+          console.log("user",user);
         }
 });
 

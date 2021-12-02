@@ -21,6 +21,7 @@ export class Tab2Page {
   medicamento:string = '';
   cantidad:string = '';
   image:string = '';
+  bio:string = '';
   uid:string;
   seniorId:string;
   newImage = "";
@@ -33,13 +34,9 @@ export class Tab2Page {
     this.uid = localStorage.getItem('uid')
 
     active.params.subscribe(key=>{
-      console.log("esto es key", key);
       if(key.id!==null){
-        console.log("esto es key.id", key.id);
         this.seniorId = key.id;
-        console.log("esto es this.seniorId", this.seniorId);
         db.database.ref('list/'+this.uid+"/"+key.id).once('value', (snap)=>{
-          console.log("esto es snap.val",snap.val());
           this.name = snap.val().name
           this.number = snap.val().number
           this.edad = snap.val().edad
@@ -47,8 +44,8 @@ export class Tab2Page {
           this.sex = snap.val().sex
           this.medicamento = snap.val().medicamento
           this.cantidad = snap.val().cantidad
-          
           this.image = snap.val().image
+          this.bio = snap.val().bio
         })
       }
     })
@@ -62,7 +59,7 @@ export class Tab2Page {
     const res =  await this.firestorageService.uploadImage(this.newFile, path, imagename);
     this.image = res;
 
-    this.db.database.ref('list/'+this.uid).push({name:this.name, number:this.number, edad:this.edad, gsng:this.gsng, sex:this.sex, medicamento:this.medicamento, cantidad:this.cantidad, image:this.image}).then(()=> this).then(()=>{
+    this.db.database.ref('list/'+this.uid).push({bio:this.bio, name:this.name, number:this.number, edad:this.edad, gsng:this.gsng, sex:this.sex, medicamento:this.medicamento, cantidad:this.cantidad, image:this.image}).then(()=> this).then(()=>{
       this.name="";
       this.number="";
       this.edad="";
@@ -71,6 +68,7 @@ export class Tab2Page {
       this.medicamento="";
       this.cantidad="";
       this.image="";
+      this.bio="";
 
     })
     .catch(e=>{
@@ -85,7 +83,7 @@ export class Tab2Page {
     const res =  await this.firestorageService.uploadImage(this.newFile, path, imagename);
     this.image = res;
 
-    this.db.database.ref('list/'+this.uid+'/'+this.seniorId).set({name:this.name, number:this.number, edad:this.edad, gsng:this.gsng, sex:this.sex, medicamento:this.medicamento, cantidad:this.cantidad, image:this.image}).then(()=> this).then(()=>{
+    this.db.database.ref('list/'+this.uid+'/'+this.seniorId).set({bio:this.bio, name:this.name, number:this.number, edad:this.edad, gsng:this.gsng, sex:this.sex, medicamento:this.medicamento, cantidad:this.cantidad, image:this.image}).then(()=> this).then(()=>{
       this.name="";
       this.number="";
       this.edad="";
@@ -94,6 +92,7 @@ export class Tab2Page {
       this.medicamento="";
       this.cantidad="";
       this.image="";
+      this.bio="";
     })
     .catch(e=>{
       console.log(e);

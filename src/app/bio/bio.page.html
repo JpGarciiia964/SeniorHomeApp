@@ -1,8 +1,8 @@
-<ion-header>
+<ion-header *ngFor="let senior of seniors">
   <ion-toolbar >
      <ion-back-button slot="start"></ion-back-button>
     <ion-title >
-      
+      {{senior.name}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -11,14 +11,25 @@
 <ion-content *ngFor="let senior of seniors">
   <ng-container >
     <div class="ion-center">
+
+      <ion-img [src]="senior.image"></ion-img>
+
       
-      <!-- <ion-item>
-        <ion-label position="floating">Nombre</ion-label>
-        <ion-input [(ngModel)]="name"></ion-input>
-      </ion-item>  -->
-      <h3>Nombre: {{senior.name}}</h3>
+      <!-- <ion-card>
+        <ion-card-header>
+          <ion-img [src]="senior.image"></ion-img>
+          <ion-card-title>{{senior.number}}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+      </ion-card>
+       -->
+      
     
-        <!-- <ion-img src="https://i.pinimg.com/236x/e0/b7/e8/e0b7e895361da676c3d709170508cc39.jpg"></ion-img> -->
+       
 
     </div>
   </ng-container>

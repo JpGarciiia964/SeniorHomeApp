@@ -37,52 +37,22 @@ export class BioPage implements OnInit {
     public firestorageService:FirestorageService,
     private user:UserService) {
     this.uid = localStorage.getItem('uid')
-
-      //active.params.subscribe(key=>{
-      //  console.log("esto es key", key);
-       // if(key.id!==null){
-         // console.log("esto es key.id", key.id);
-         // this.seniorId = key.id;
-         // db.database.ref('list/'+this.uid+"/"+key.id).once('value',(snap)=>{
-          //  console.log("esto es snap.val",snap.val());
-
-          //  this.name = snap.val().name
-          //  console.log("esto es name",this.name);
-           // this.number = snap.val().number
-           // this.edad = snap.val().edad
-           // this.gsng = snap.val().gsng
-           // this.sex = snap.val().sex
-            //this.medicamento = snap.val().medicamento
-           // this.cantidad = snap.val().cantidad
-            
-            //this.image = snap.val().image
-            
-          //})
-        //}
-      //})
-      
   }
-  ngOnInit() {
-        
-    this.itemRef = this.db.object('list/'+this.uid);
-    this.itemRef.snapshotChanges().subscribe(action => {
+
+  ngOnInit() { 
+
+    let idenviado = this.active.snapshot.paramMap.get('id');
+    console.log("Esto es lo que capturo",idenviado)
+    
+    this.itemRef = this.db.object('list/'+this.uid+'/'+idenviado);
+    this.itemRef.snapshotChanges().subscribe(action=>{
       let data = action.payload.val()
-       this.seniors=[];
-        if(data!== null){
-        console.log("Data",data)
-          for(let k in data){
-            let sn = data [k];
-            sn.key = k
-            console.log("Senior.k: ", sn.key )
-           this.seniors.push(sn)
-          }
-        console.log("ID",this.senior)
-        
-
-      }
+      console.log(data)
+      this.seniors=[];
+      this.seniors.push(data)
+      
     });
-   
-
+    
 
   }  
 
