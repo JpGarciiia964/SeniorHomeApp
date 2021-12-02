@@ -6,6 +6,10 @@ import { Seniors } from '../interfaces/models';
 import { BioService } from '../services/bio.service';
 import { FirestorageService } from '../services/firestorage.service';
 import { UserService } from '../services/user.service';
+import { ModalController } from '@ionic/angular';
+import { MedicmodalPage } from '../medicmodal/medicmodal.page';
+
+
 
 
 @Component({
@@ -27,7 +31,7 @@ export class BioPage implements OnInit {
 
   itemRef : any;
   seniors=[];
-  senior=[];
+  medicamentos=[];
 
   uid:string;
   seniorId:string;
@@ -35,8 +39,10 @@ export class BioPage implements OnInit {
   constructor(public db:AngularFireDatabase, 
     private active:ActivatedRoute,
     public firestorageService:FirestorageService,
-    private user:UserService) {
+    private user:UserService,
+    public modal:ModalController) {
     this.uid = localStorage.getItem('uid')
+    //this.getMedicamentos()
   }
 
   ngOnInit() { 
@@ -52,9 +58,19 @@ export class BioPage implements OnInit {
       this.seniors.push(data)
       
     });
-    
-
   }  
+
+  getMedicamentos(){
+    
+  }
+
+  async openModal(){
+    const modal = await this.modal.create({
+      component: MedicmodalPage,
+      cssClass: 'modal-class'
+    });
+    return await modal.present();
+  }
 
 }
 

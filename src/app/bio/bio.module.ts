@@ -8,6 +8,8 @@ import { BioPageRoutingModule } from './bio-routing.module';
 
 import { BioPage } from './bio.page';
 
+import { MedicmodalPage } from '../medicmodal/medicmodal.page';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +17,11 @@ import { BioPage } from './bio.page';
     IonicModule,
     BioPageRoutingModule
   ],
-  declarations: [BioPage]
+  entryComponents: [
+    MedicmodalPage,
+  ],
+  declarations: [BioPage,
+    MedicmodalPage,
+  ]
 })
 export class BioPageModule {}

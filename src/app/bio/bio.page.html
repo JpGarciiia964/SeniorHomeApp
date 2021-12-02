@@ -7,30 +7,50 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content *ngFor="let senior of seniors">
   <ng-container >
-    <div class="ion-center">
+    <div>
+        <ion-card>
+          <ion-item>
+          <ion-card-header>
+            <!-- <ion-card-subtitle>{{senior.name}}</ion-card-subtitle> -->
+            <ion-img [src]="senior.image"></ion-img>
+            <hr color="#FF0000" />
+            <b> 
+              <ion-card-title style="text-align:center; color:brown;">{{senior.name}} | {{senior.number}}</ion-card-title>
+            </b>
+          </ion-card-header>
+        </ion-item>
+        
+        <ion-item>
+          <ion-card-content style="text-align: justify;">
+              {{senior.bio}}
+              <br>
+              <b>Sangre: {{senior.gsng}} | Edad: {{senior.edad}}</b>
+          </ion-card-content>
+        </ion-item>
+        </ion-card>
+        
+        <h4 style="text-align:center; background-color: brown; color:azure;"> Medicamentos</h4>
+        <ion-item>
 
-      <ion-img [src]="senior.image"></ion-img>
+          <ion-chip>
+            <ion-icon name="medkit-outline" color="danger"></ion-icon>
+            <ion-label>{{senior.medicamento}} | {{senior.cantidad}}</ion-label>
+            <ion-icon name="close"></ion-icon>
+          </ion-chip>
 
-      
-      <!-- <ion-card>
-        <ion-card-header>
-          <ion-img [src]="senior.image"></ion-img>
-          <ion-card-title>{{senior.number}}</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
-        </ion-card-content>
-      </ion-card>
-       -->
-      
-    
-       
+          <ion-buttons slot="end">
+            <ion-button>
+              <label>
+              <ion-icon color="danger" (click)="openModal()" slot="icon-only" name="add-circle-outline"></ion-icon>
+              </label>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
 
+        <!-- <h4 style="text-align:center; background-color: brown; color:azure;"> Enfermedades</h4> -->
+        
     </div>
   </ng-container>
 </ion-content>

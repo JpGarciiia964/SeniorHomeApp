@@ -30,6 +30,18 @@ const routes: Routes = [
     path: 'medicamentos/:id',
     loadChildren: () => import('./medicamentos/medicamentos.module').then( m => m.MedicamentosPageModule)
   },
+  {
+    path: 'medicmodal',
+    loadChildren: () => import('./medicmodal/medicmodal.module').then( m => m.MedicmodalPageModule)
+  },
+  {
+    path: 'blog',
+    loadChildren: () => import('./blog/blog.module').then( m => m.BlogPageModule)
+  },
+  {
+    path: 'single',
+    loadChildren: () => import('./single/single.module').then( m => m.SinglePageModule)
+  },
   
 
 ];
