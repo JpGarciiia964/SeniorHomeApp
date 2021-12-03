@@ -1,9 +1,30 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>blog</ion-title>
+<ion-header [translucent]="true">
+  
+
+  <ion-toolbar color="danger">
+
+    <ion-buttons slot="end">
+      <ion-button>
+        <label>
+        <ion-icon color="dark" [routerLink]="['/login']" slot="icon-only" name="log-in-outline"></ion-icon>
+        </label>
+      </ion-button>
+    </ion-buttons>
+    <ion-title  style="font-family: Open Sans; color:black;">
+      Información
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>  
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content forceOverscroll="false">
+  <iframe
+    width="100%"
+    height="100%"
+    [src]="helpUrl"
+    frameborder="0"
+    allowfullscreen
+  ></iframe>
 </ion-content>
