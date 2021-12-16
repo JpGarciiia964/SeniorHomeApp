@@ -22,11 +22,11 @@
 
       <ion-item-sliding *ngFor="let medicamento of medicamentos">
         <ion-item-options side="start">
-          <ion-item-option color="warning" [routerLink]="['/medicamentos',medicamento.key]"><ion-icon style="font-size:30px" name="create-outline"></ion-icon></ion-item-option>
+          <ion-item-option color="warning" [routerLink]="['/medicamentos',medicamento.key]" (click)="closeModal()" ><ion-icon style="font-size:30px" name="create-outline"></ion-icon></ion-item-option>
         </ion-item-options>
         
         <ion-item>
-          <ion-row style="width: 100%;" >
+          <ion-row *ngFor="let senior of seniors" style="width: 100%;" (click)="enviarMedicamento()" >
             <ion-col size="2">
               <ion-avatar>
                 <ion-img [src]="medicamento.image"></ion-img>
@@ -58,7 +58,7 @@
     </ion-list>
 
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button [routerLink]="['/tabs/tab2']" color="danger" >
+      <ion-fab-button [routerLink]="['/medicamentos']" (click)="closeModal()" color="danger" >
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
     </ion-fab>

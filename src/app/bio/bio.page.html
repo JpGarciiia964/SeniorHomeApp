@@ -34,9 +34,9 @@
         <h4 style="text-align:center; background-color: brown; color:azure;"> Medicamentos</h4>
         <ion-item>
 
-          <ion-chip>
+          <ion-chip *ngFor="let med of medic">
             <ion-icon name="medkit-outline" color="danger"></ion-icon>
-            <ion-label>{{senior.medicamento}} | {{senior.cantidad}}</ion-label>
+            <ion-label>{{med.nombre}} | {{med.stock}}</ion-label>
             <ion-icon name="close"></ion-icon>
           </ion-chip>
 

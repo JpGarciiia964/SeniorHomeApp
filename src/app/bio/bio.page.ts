@@ -6,7 +6,7 @@ import { Seniors } from '../interfaces/models';
 import { BioService } from '../services/bio.service';
 import { FirestorageService } from '../services/firestorage.service';
 import { UserService } from '../services/user.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavParams } from '@ionic/angular';
 import { MedicmodalPage } from '../medicmodal/medicmodal.page';
 
 
@@ -20,18 +20,14 @@ import { MedicmodalPage } from '../medicmodal/medicmodal.page';
 export class BioPage implements OnInit {
 
 
-  name:string ='';
-  number:string ='';
-  edad:string ='';
-  gsng:string = '';
-  sex:string = '';
-  medicamento:string = '';
-  cantidad:string = '';
-  image:string = '';
 
   itemRef : any;
   seniors=[];
   medicamentos=[];
+  medic=[];
+
+  nombre:string;
+  cantidad:string;
 
   uid:string;
   seniorId:string;
@@ -42,7 +38,10 @@ export class BioPage implements OnInit {
     private user:UserService,
     public modal:ModalController) {
     this.uid = localStorage.getItem('uid')
-    //this.getMedicamentos()
+
+
+    //this.medic = navParams.get('data')
+    //console.log(this.medic)
   }
 
   ngOnInit() { 
@@ -56,21 +55,33 @@ export class BioPage implements OnInit {
       console.log(data)
       this.seniors=[];
       this.seniors.push(data)
+
+     
       
     });
   }  
-
-  getMedicamentos(){
-    
-  }
 
   async openModal(){
     const modal = await this.modal.create({
       component: MedicmodalPage,
       cssClass: 'modal-class'
     });
-    return await modal.present();
-  }
+     await modal.present();
+
+     const { data } = await modal.onDidDismiss();
+     console.log("Esto es el medicamento que capturo",data)
+     this.medic = [];
+     for(let k in data){
+      let med = data [k];
+      med.key = k
+      this.medic.push(med)
+      console.log("Nombre",med)
+     }
+   
+      
+     
+  } 
+
 
 }
 

@@ -22,6 +22,7 @@ const routes: Routes = [
     path: 'bio/:id',
     loadChildren: () => import('./bio/bio.module').then( m => m.BioPageModule)
   },
+  
   {
     path: 'medicamentos',
     loadChildren: () => import('./medicamentos/medicamentos.module').then( m => m.MedicamentosPageModule)
